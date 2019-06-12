@@ -1,0 +1,47 @@
+.publish-page-checkbox {
+    min-height: 1rem;
+    padding-left: 0;
+    margin-right: 0;
+    cursor: pointer;
+}
+.publish-page-checkbox .publish-page-control-indicator {
+    content: "";
+    display: inline-block;
+    position: relative;
+    width: 90px;
+    height: 30px;
+    background-color: #818181;
+    border-radius: 45px;
+    margin-right: 30px;
+    -webkit-transition: background .3s ease;
+    transition: background .3s ease;
+    vertical-align: middle;
+    margin: 0 16px;
+    box-shadow: none;
+}
+.publish-page-checkbox .publish-page-control-indicator:after {
+    content: "";
+    position: absolute;
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    background-color: #f1f1f1;
+    border-radius: 21px;
+    box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.4);
+    left: -2px;
+    top: -4px;
+    -webkit-transition: left .3s ease, background .3s ease, box-shadow .1s ease;
+    transition: left .3s ease, background .3s ease, box-shadow .1s ease;
+}
+.publish-page-checkbox .publish-page-control-input:checked ~ .publish-page-control-indicator {
+    background-color: #84c7c1;
+    background-image: none;
+    box-shadow: none !important;
+}
+.publish-page-checkbox .publish-page-control-input:checked ~ .publish-page-control-indicator:after {
+    background-color: #84c7c1;
+    left: 56px;
+}
+.publish-page-checkbox .publish-page-control-input:focus ~ .publish-page-control-indicator {
+    box-shadow: none !important;
+}

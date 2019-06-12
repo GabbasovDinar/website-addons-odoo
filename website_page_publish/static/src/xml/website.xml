@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="website.publish_page">
+        <t t-call="website.modal_base">
+            <div class="row">
+                <t t-if="is_publish">
+                    <div class="col-sm-offset-2 col-sm-8 alert alert-info">
+                        <t t-esc="window_body"/>
+                    </div>
+                </t>
+                <t t-if="!is_publish">
+                    <div class="col-sm-offset-2 col-sm-8 alert alert-warning">
+                        <t t-esc="window_body"/>
+                    </div>
+                </t>
+                <form class="form-horizontal col-sm-12" role="form" t-att-id="id">
+                    <label class="publish-page-control publish-page-checkbox">
+                        <input type="checkbox" class="o_hidden publish-page-control-input" t-att-checked="is_publish ? 'checked' : undefined"/>
+                        <span class="publish-page-control-indicator"></span>
+                    </label>
+                </form>
+            </div>
+        </t>
+    </t>
+
+    <t t-extend="website.modal_footer">
+        <t t-jquery=".btn-continue" t-operation="replace">
+            <t t-if="id === 'editor_publish_page'">
+                <button type="button" class="btn btn-primary btn-continue">Apply</button>
+            </t>
+            <t t-if="id !== 'editor_publish_page'">
+                <button type="button" class="btn btn-primary btn-continue">Continue</button>
+            </t>
+        </t>
+    </t>
+
+</templates>
