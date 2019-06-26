@@ -34,6 +34,7 @@ class IrProperty(models.Model):
         website_id = self._context.get('website_id') or self.env.user.backend_website_id.id
         return website_id
 
+    @api.model
     def _get_domain(self, prop_name, model):
         domain = super(IrProperty, self)._get_domain(prop_name, model)
         if self.env.context.get('_get_domain_website_dependent'):

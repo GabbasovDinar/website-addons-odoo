@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="website_multi_company.all_websites">
+        <t t-foreach="websites" t-as="item">
+            <li class="o_website_choice" t-att-data-website_id="item.id">
+                <a href="#" data-action="change_website">
+                    <t t-esc="item.name"></t>
+                </a>
+            </li>
+        </t>
+    </t>
+
+</templates>

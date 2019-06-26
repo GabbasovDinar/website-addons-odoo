@@ -32,6 +32,7 @@
         "data/first_action.xml",
     ],
     "qweb": [
+        "static/src/xml/*.xml",
     ],
     "demo": [
         "data/demo.xml",

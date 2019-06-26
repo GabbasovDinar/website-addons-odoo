@@ -27,8 +27,7 @@ class WebsiteExtended(Website):
                     return request.redirect(first_menu.url)
                 if first_menu.url and first_menu.url.startswith('/page/'):
                     return request.registry['ir.http'].reroute(first_menu.url)
-        import wdb
-        wdb.set_trace()
+
         page = 'homepage' + str(website.id)
         full_page = 'website.' + page
         try:
@@ -49,3 +48,22 @@ class WebsiteExtended(Website):
             request.redirect('/')
 
         return self.page(page)
+
+    @http.route('/website_multi_company/all_websites', type='json', auth="public", website=True)
+    def all_websites(self):
+        current_website_id = request.website.id
+        all_websites = request.env.user.backend_website_ids.filtered(lambda website: website.id != current_website_id)
+        result = []
+        for website in all_websites:
+            result.append({'id': website.id, 'name': website.name})
+        return result
+
+    @http.route('/website_multi_company/change_website',  type='json', auth="user", website=True)
+    def change_website(self, website_id, view_id):
+        # TODO: open website by view
+        view = request.env['ir.ui.view'].browse(view_id)
+        website = request.env['website'].browse(website_id)
+        request.env.user.write({
+            'backend_website_id': website_id
+        })
+        return website.domain

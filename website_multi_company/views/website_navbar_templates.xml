@@ -1,8 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <template id="user_navbar" inherit_id="website.user_navbar">
-    <xpath expr="//ul[@id='oe_systray']" position="attributes">
-        <attribute name="t-if">uid and (not user_id.editor_website_ids or website_id in user_id.editor_website_ids.ids)</attribute>
-    </xpath>
-  </template>
+    <template id="user_navbar" inherit_id="website.user_navbar">
+        <xpath expr="//ul[@id='oe_systray']" position="attributes">
+            <attribute name="t-if">uid and (not user_id.editor_website_ids or website_id in user_id.editor_website_ids.ids)</attribute>
+        </xpath>
+    </template>
+
+    <template id="user_navbar_website" inherit_id="website.layout" groups="base.group_user">
+        <xpath expr="//li[@id='customize-menu']" position="before">
+            <li class="dropdown" id="website-menu" groups="base.group_website_designer">
+                <a id="website-menu-button" class="dropdown-toggle" data-toggle="dropdown" href="#" t-att-data-website_id="website.id">
+                    <span><t t-esc="website.name"></t></span>
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu website_menu" role="menu">
+                    <li class="first_divider divider"> </li>
+                </ul>
+            </li>
+        </xpath>
+    </template>
 </odoo>
