@@ -69,7 +69,7 @@ class IrConfigParameter(models.Model):
         if default_prop.company_id:
             vals['company_id'] = None
 
-        if default_prop.get_by_record(r) != value:
+        if default_prop.get_by_record(default_prop) != value:
             vals['value'] = value
 
         default_prop.write(vals)
