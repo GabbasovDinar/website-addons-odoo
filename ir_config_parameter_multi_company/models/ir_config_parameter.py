@@ -38,6 +38,7 @@ class IrConfigParameter(models.Model):
                     r._force_default(value)
         return res
 
+    @api.multi
     def _force_default(self, value):
         """Remove company-dependent values and keeps only default one"""
         self.ensure_one()
