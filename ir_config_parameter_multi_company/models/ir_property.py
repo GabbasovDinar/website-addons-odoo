@@ -28,6 +28,6 @@ class IrProperty(models.Model):
                 continue
             # Default value is updated. Set new value in column "value"
             model, res_id = r.res_id.split(',')
-            value = r.get_by_record()
+            value = r.get_by_record(r)
             param = self.env['ir.config_parameter'].browse(int(res_id))
             param._update_db_value(value)
